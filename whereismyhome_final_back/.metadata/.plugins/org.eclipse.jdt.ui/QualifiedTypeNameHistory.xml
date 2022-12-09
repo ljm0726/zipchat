@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.ssafy.apt.model.dto.SidoGugunDong"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="com.ssafy.apt.model.dto.DealInfo"/>
+<fullyQualifiedTypeName name="com.ssafy.apt.model.mapper.DealInfoDaoMapper"/>
+<fullyQualifiedTypeName name="java.net.URLEncoder"/>
+<fullyQualifiedTypeName name="com.ssafy.apt.model.dto.School"/>
+</qualifiedTypeNameHistroy>
