@@ -20,6 +20,7 @@
   <img src="https://img.shields.io/badge/Database-MySql-4479A1?style=flat&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/Framework-Vue-4FC08D?style=flat&logo=Vue.js&logoColor=white">
   <img src="https://img.shields.io/badge/Framework-SpringBoot-6DB33F?style=flat&logo=Spring Boot&logoColor=white">
+  <img src="https://img.shields.io/badge/Framework-Mybatis-BE3939?style=flat">
   <img src="https://img.shields.io/badge/Library-BootstrapVue-7952B3?style=flat&logo=bootstrap&logoColor=white">
   <img src="https://img.shields.io/badge/API-Kakao_Map-red?style=flat">
   <img src="https://img.shields.io/badge/API-Naver_News-6DB33F?style=flat"> 
@@ -63,46 +64,47 @@
 
 ## 실행 화면
 
-### 메인 페이지
+### **🔗메인 페이지**
 ![메인페이지](./assets/메인페이지.gif)
-
  ⭕ 메인 화면, 부동산 관려 뉴스 및 공지사항, 관심지역 매물 정보인 3개의 화면으로 메인 페이지 구성
 <br>
 <br>
 
-### 회원 정보 관련 페이지
-![회원가입과_로그인](./assets/회원가입과_로그인.gif)
-
- ⭕ 회원가입 시 아이디 중복여부 체크, 비밀번호 확인을 통해 추가로 체크
+---
 <br>
 
+### **🔗 회원 정보 관련 페이지**
+![회원가입과_로그인](./assets/회원가입과_로그인.gif)
+ ⭕ 회원가입 시 아이디 중복여부 체크, 비밀번호 확인을 통해 추가로 체크
+<br>
+<br>
 ![회원정보_확인_수정](./assets/회원정보_확인_수정.gif)
-
  ⭕ 회원정보 확인 및 수정, 탈퇴 
 <br>
 <br>
 
-### 공지사항 페이지
-![공지사항_페이징_검색](./assets/공지사항_페이징_검색.gif)
-
- ⭕ 공지사항 페이징 구현, 키워드를 통해 제목, 작성자로 검색 가능
+---
 <br>
 
+### **🔗 공지사항 페이지**
+![공지사항_페이징_검색](./assets/공지사항_페이징_검색.gif)
+ ⭕ 공지사항 페이징 구현, 키워드를 통해 제목, 작성자로 검색 가능
+<br>
+<br>
 ![공지사항_CRUD](./assets/공지사항_CRUD.gif)
-
  ⭕ 관리자만 고지사항 쓰기, 수정, 삭제 가능
 <br>
 <br>
 
-### 관심지역 페이지
-![관심지역페이지](./assets/관심지역페이지.gif)
+---
+<br>
 
+### **🔗 관심지역 페이지**
+![관심지역페이지](./assets/관심지역페이지.gif)
  ⭕ 관심지역으로 추가된 지역의 매매 정보 리스트
      관심지역의 뉴스 및 연도별 거래 횟수 차트
 <br>
-
+<br>
 ![메인페이지_슬라이드](./assets/메인페이지_슬라이드.gif)
-
  ⭕ 메인 페이지에서 관심지역으로 추가된 지역의 최신 거래내역 3개를 보여줌
 <br>
-
