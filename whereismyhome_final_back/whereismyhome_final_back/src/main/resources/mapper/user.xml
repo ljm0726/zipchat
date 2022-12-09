@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.user.model.mapper.UserMapper">
+
+	<resultMap type="userDto" id="user">
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+	</resultMap>
+	
+	<resultMap type="userDto" id="userAll" extends="user">
+		<result column="pass" property="pass"/>
+		<result column="address" property="address"/>
+		<result column="phone" property="phone"/>
+		<result column="roll" property="roll"/>
+	</resultMap>
+
+	<select id="idCheck" parameterType="string" resultType="int">
+		select count(id)
+		from user
+		where id = #{id}
+	</select>
+
+	<insert id="joinUser" parameterType="userDto">
+		insert into user (id, pass, name, email, address, phone, join_date, roll)
+		values (#{id}, md5(#{pass}), #{name}, #{email}, #{address}, #{phone}, now(), 1)
+	</insert>
+
+	<!-- <select id="loginUser" parameterType="map" resultType="userDto">
+		select *
+		from user
+		where id = #{id} and pass = md5(#{pass})
+	</select> -->
+	
+	<select id="loginUser" parameterType="userDto" resultType="userDto">
+		select id, pass, name, email, address, phone, join_date as joinDate, roll
+		from user
+		where id = #{id} and pass = md5(#{pass}) and isDel = 0
+	</select>
+		
+	<update id="updateUser" parameterType="userDto">
+		update user
+		<trim prefix="set" suffixOverrides=",">
+			<if test="pass != null">pass = md5(#{pass}),</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="address != null">address = #{address},</if>
+			<if test="phone != null">phone = #{phone},</if>
+			<if test="email != null">email = #{email},</if>
+		</trim>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+		update user
+        set isDel=1
+        where id = #{id}
+	</delete>
+	
+	<select id="getUserInfo" parameterType="string" resultType="userDto">
+		select id, pass, name, email, address, phone, join_date as joinDate, roll
+		from user
+		where id = #{id}
+	</select>
+	
+	<select id="getRefreshToken" parameterType="string" resultType="string">
+		select token
+		from user
+		where id = #{id}
+	</select>
+	
+	<update id="saveRefreshToken" parameterType="map">
+		update user
+		set token = #{token}
+		where id = #{id}
+	</update>
+	
+	<update id="deleteRefreshToken" parameterType="map">
+		update user
+		set token = #{token, jdbcType=VARCHAR}
+		where id = #{id}
+	</update>
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.apt.model.mapper.DealInfoDaoMapper">
+
+	<resultMap type="bus" id="busdata">
+		<result column="bus_name" property="bus_name"/>
+		<result column="gps_lati" property="gps_lati"/>
+		<result column="gps_long" property="gps_long"/>
+		<result column="distance" property="distance"/>
+	</resultMap>
+
+	<select id="getDealInfos" parameterType="map" resultType="dealInfo">
+			select i.apartmentName as apartmentName, d.floor as floor, d.area as area, i.dong as dong , d.dealamount as dealamount, i.roadName as roadName, i.roadNameBonbun as bonbun, i.lng as lng, i.lat as lat
+			from housedeal as d
+			join houseinfo as i
+			on d.aptcode = i.aptCode
+			where i.dongCode = #{regCode} and d.dealYear = ${year} and d.dealMonth = ${month}
+			limit 30
+	</select>
+
+	<insert id="like" parameterType="map">
+			insert into favorite(user_id, houseinfo_aptCode, dongCode)
+			values(#{id}, concat(left(#{dongCode},5),'000000001') ,#{dongCode})
+	</insert>
+	<delete id="delMyDong" parameterType="map">
+		delete from favorite 
+		where user_id = #{id} and dongCode = #{dongCode};
+	</delete>
+	
+	<select id="isFavoriteChk" parameterType="map" resultType="String">
+			select dongCode
+			from favorite
+			where user_id = #{id} and dongCode = #{dongCode};
+	</select>
+	
+	<select id="listArticle" parameterType="map" resultType="dealInfo">
+			select i.apartmentName as apartmentName, d.floor as floor, d.area as area, i.dong as dong , d.dealamount as dealamount, i.roadName as roadName, i.roadNameBonbun as bonbun, i.lng as lng, i.lat as lat
+			from housedeal as d
+			join houseinfo as i
+			on d.aptcode = i.aptCode
+			where i.dongCode in (select distinct dongCode from favorite where user_id = #{id})
+			limit 30
+	</select>
+
+	<select id="getNearBusInfo" parameterType="map" resultMap="busdata">
+			select b.bus_name, b.gps_lati, b.gps_long
+			from bus b
+			where (6371*ACOS(COS(RADIANS(#{lat}))*COS(RADIANS(b.gps_lati))*COS(radians(b.gps_long)-RADIANS(#{lng}))+SIN(RADIANS(#{lat}))*SIN(RADIANS(b.gps_lati)))) &lt; 2.0
+			order by (6371*ACOS(COS(RADIANS(#{lat}))*COS(RADIANS(gps_lati))*COS(radians(gps_long)-RADIANS(#{lng}))+SIN(RADIANS(#{lat}))*SIN(RADIANS(gps_lati))))
+	</select>
+	
+	<select id="getSido" resultType="sidoGugunDong">
+		select distinct left(dongCode,2)sidoCode, sidoName
+		from dongcode
+		order by dongCode;
+	</select>
+	
+	<select id="getGugun" parameterType="string" resultType="sidoGugunDong">
+		select distinct left(dongCode,5)gugunCode, gugunName
+		from dongcode
+		where left(dongCode,2) = #{sidoCode}
+		and gugunName is not null
+		order by gugunName;
+	</select>
+	
+	<select id="getDong" parameterType="string" resultType="sidoGugunDong">
+		select dongCode, dongName
+		from dongcode
+		where left(dongCode, 5) = #{gugunCode}
+		and dongName is not null
+		order by dongName;
+	</select>
+	
+	
+	<!-- 마커를 아파트 당 하나만 띄우기 위해 사용. -->
+	<select id="getNearApartInfoOne" parameterType="map" resultType="dealInfo">
+		select distinct i.apartmentName, i.lat, i.lng
+		from housedeal as d
+		join houseinfo as i
+		on d.aptcode = i.aptCode
+		where (6371*ACOS(COS(RADIANS(#{lat}))*COS(RADIANS(i.lat))*COS(radians(i.lng)-RADIANS(#{lng}))+SIN(RADIANS(#{lat}))*SIN(RADIANS(i.lat)))) &lt; 3.0;
+	</select>
+	
+	<!-- 한 아파트의 모든 거래내역을 불러옴 -->
+	<select id="getNearApartInfo" parameterType="map" resultType="dealInfo">
+		select i.apartmentName as apartmentName, d.floor as floor, d.area as area, i.dong as dong, d.dealamount as dealamount, i.roadName as roadName, i.roadNameBonbun as bonbun, i.lng as lng, i.lat as lat
+		from housedeal as d
+		join houseinfo as i
+		on d.aptcode = i.aptCode
+		where (6371*ACOS(COS(RADIANS(#{lat}))*COS(RADIANS(i.lat))*COS(radians(i.lng)-RADIANS(#{lng}))+SIN(RADIANS(#{lat}))*SIN(RADIANS(i.lat)))) &lt; 3.0
+		and i.apartmentName = #{apartmentName} and i.lat = #{lat} and i.lng = #{lng};
+	</select>
+	<!-- and i.apartmentName = #{apartmentName} --> 
+	
+	<!-- 관심지역 관련 리스트 가져오기  -->
+	<select id="getMyFavorite" parameterType="String" resultType="dealInfo">
+		select dongName as dong, d.dongCode as dongCode
+		from favorite f, dongCode d
+		where f.dongCode = d.dongCode and user_id = #{id};
+	</select>
+	
+	<select id="getMyFavoriteList" parameterType="String" resultType="dealInfo">
+		select i.apartmentName as apartmentName, d.floor as floor, d.area as area, i.dong as dong, d.dealamount as dealamount,
+		 i.roadName as roadName, i.roadNameBonbun as bonbun, i.lng as lng, i.lat as lat, d.dealYear as dealYear
+		from housedeal as d
+		join houseinfo as i
+		on d.aptcode = i.aptCode
+		where i.dongCode = #{dongCode}
+	</select>
+	
+	<select id="getMainFavoriteList" parameterType="String" resultType="dealInfo">
+		select i.apartmentName as apartmentName, d.floor as floor, d.area as area, i.dong as dong , d.dealamount as dealamount, i.roadName as roadName,
+		i.roadNameBonbun as bonbun, i.lng as lng, i.lat as lat, d.dealYear, d.dealMonth, d.dealDay, i.dongCode
+		from housedeal as d
+		join houseinfo as i
+		on d.aptcode = i.aptCode
+		where i.dongCode = #{dongCode}
+		order by d.dealYear desc, d.dealMonth desc, d.dealDay desc
+		limit 3;
+	</select>
+	
+	<select id="getNearSchoolInfo" parameterType="map" resultType="school">
+		select school_id schoolId, school_name schoolName, school_level schoolLevel, address_jibun addressJibun, address_doro addressDoro, gps_lati gpsLati, gps_long gpsLong
+		from school
+		where (6371*ACOS(COS(RADIANS(#{lat}))*COS(RADIANS(gps_lati))*COS(radians(gps_long)-RADIANS(#{lng}))+SIN(RADIANS(#{lat}))*SIN(RADIANS(gps_lati)))) &lt; 1.0
+		order by (6371*ACOS(COS(RADIANS(#{lat}))*COS(RADIANS(gps_lati))*COS(radians(gps_long)-RADIANS(#{lng}))+SIN(RADIANS(#{lat}))*SIN(RADIANS(gps_lati))))
+	</select>
+	
+</mapper>
