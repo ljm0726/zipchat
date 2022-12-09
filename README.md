@@ -9,7 +9,7 @@
 <br>
 
 ## 프로젝트 기간
-- 2021년 11월 16일 ~ 2021년 11월 24일
+- 2022년 11월 16일 ~ 2022년 11월 24일
 
 <br>
 
@@ -19,7 +19,7 @@
   <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white">
   <img src="https://img.shields.io/badge/Database-MySql-4479A1?style=flat&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/Framework-Vue-4FC08D?style=flat&logo=Vue.js&logoColor=white">
-  <img src="https://img.shields.io/badge/Framework-SpringFramework-6DB33F?style=flat&logo=Spring&logoColor=white">
+  <img src="https://img.shields.io/badge/Framework-SpringBoot-6DB33F?style=flat&logo=Spring Boot&logoColor=white">
   <img src="https://img.shields.io/badge/Library-BootstrapVue-7952B3?style=flat&logo=bootstrap&logoColor=white">
   <img src="https://img.shields.io/badge/API-Kakao_Map-red?style=flat">
   <img src="https://img.shields.io/badge/API-Naver_News-6DB33F?style=flat"> 
@@ -28,5 +28,38 @@
 
 <br>
 
+## 팀원
+<table>
+  <thead>
+    <tr>
+      <th>이름</th>
+      <th>구현 기능</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">이종민</td>
+      <td>Back End - 전반</td>
+    </tr>
+    <tr>
+      <td>Front End - Vuex(회원관리, 게시판, 뉴스API, 관심지역, 날씨 API), 차트, 슬라이드</td>
+    </tr>
+    <tr>
+      <td rowspan="2">최희경</td>
+      <td>Back End - 아파트 매매 정보, 버스정류장, 학교 데이터 DB 설계 및 REST 구현</td>
+    </tr>
+    <tr>
+      <td>Front End - 전반</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
 ## 기능
 ![기능](./assets/기능.PNG)
+
+<br>
+
+## 실행화면
+
