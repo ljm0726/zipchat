@@ -1,19 +1,19 @@
-# ssafy-zipchat
+# ssafy-zipchat 🏙
 ### SSAFY 8기 1학기 최종 관통프로젝트
 
 <br>
 
-## **개요**
-- 국토 교통부 아파트 매매 실거래 자료를 통해 쉽게 시세를 알 수 있게 해주고 주변 상권 및 시설 위치를 함께 제공, 관심 지역을 설정하여 관심 지역의 정보를 추가 제공
+## **개요** ✅
+- **국토 교통부 아파트 매매 실거래 자료**를 통해 쉽게 시세를 알 수 있게 해주고 <u>주변 상권 및 시설 위치</u>를 함께 제공, <u>관심 지역</u>을 설정하여 관심 지역의 정보를 추가 제공
 
 <br>
 
-## 프로젝트 기간
-- 2022년 11월 16일 ~ 2022년 11월 24일
+## 프로젝트 기간 📆
+- **2022년 11월 16일 ~ 2022년 11월 24일**
 
 <br>
 
-## 기술 스택
+## 기술 스택 🛠
 <p>
   <img src="https://img.shields.io/badge/Language-Java-007396?style=flat&logo=java&logoColor=white">
   <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white">
@@ -29,7 +29,7 @@
 
 <br>
 
-## 팀원
+## 팀원 💻
 <table>
   <thead>
     <tr>
@@ -73,7 +73,7 @@
 
 ---
 ### **🔗 회원 정보 관련 페이지**
-![회원가입과_로그인](./assets/회원가입과_로그인.gif)
+![회원가입_로그인](./assets/회원가입_로그인.gif)
  ⭕ 회원가입 시 아이디 중복여부 체크, 비밀번호 확인을 통해 추가로 체크
 <br>
 <br>
