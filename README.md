@@ -22,6 +22,7 @@
   <img src="https://img.shields.io/badge/Framework-Vue-4FC08D?style=flat&logo=Vue.js&logoColor=white">
   <img src="https://img.shields.io/badge/Framework-SpringBoot-6DB33F?style=flat&logo=Spring Boot&logoColor=white">
   <img src="https://img.shields.io/badge/Framework-Mybatis-BE3939?style=flat">
+  <img src="https://img.shields.io/badge/Library-VueX-008000?style=flat&logo=Vue.js&logoColor=white">
   <img src="https://img.shields.io/badge/Library-BootstrapVue-7952B3?style=flat&logo=bootstrap&logoColor=white">
   <img src="https://img.shields.io/badge/API-Kakao_Map-red?style=flat">
   <img src="https://img.shields.io/badge/API-Naver_News-6DB33F?style=flat"> 
