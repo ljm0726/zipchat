@@ -40,8 +40,8 @@ public class NewsController {
 	private final Logger logger = LoggerFactory.getLogger(NewsController.class);
 	private static final String SUCCESS = "success";
 	private static final String FAIL = "fail";
-	private static final String clientId = "Ql3c_75jfDb__90HVqE6";
-	private static final String clientSecret = "9CqmOZckpl"; 
+	private static final String clientId = "id";
+	private static final String clientSecret = "secret"; 
 	private static final String apiUrl = "https://openapi.naver.com/v1/search/news?display=3&query=";
 
 	@Autowired
